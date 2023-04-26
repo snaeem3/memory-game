@@ -29,12 +29,31 @@ const App = () => {
     setScore(score + 1);
   }
 
+  function resetGame() {
+    const updatedGrid = [...grid];
+    setGrid(unselectAllObjects(updatedGrid));
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+    setScore(0);
+
+    function unselectAllObjects(array) {
+      const updatedArray = array.map((obj) => ({
+        ...obj,
+        selected: false,
+      }));
+      return updatedArray;
+    }
+  }
+
   const handleClick = (event) => {
     const clickedID = event.target.id;
     const gridIndex = grid.findIndex((item) => item.id === clickedID);
     // Check if current card has been selected
     if (grid[gridIndex].selected) {
+      console.log(`${event.target.id} already selected`);
       // If so, end game
+      resetGame();
     } else {
       // Else mark card as selected and increment score
       setSelected(clickedID);
@@ -47,6 +66,7 @@ const App = () => {
       <header>Memory Game</header>
       <CardGrid grid={grid} handleClick={handleClick} />
       Score: {score}
+      Best Score: {bestScore}
     </div>
   );
 };
