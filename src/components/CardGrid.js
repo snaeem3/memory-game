@@ -12,6 +12,7 @@ const CardGrid = (props) => {
           id={cardInfo.id}
           name={cardInfo.name}
           handleClick={handleClick}
+          imgSrc={cardInfo.imgSrc}
         />
       ))}
     </div>

@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import uniqid from 'uniqid';
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import CardGrid from './components/CardGrid';
+import { flags } from './flagData';
 
 const App = () => {
-  const [grid, setGrid] = useState([
-    { id: uniqid(), name: 'A', selected: false },
-    { id: uniqid(), name: 'B', selected: false },
-    { id: uniqid(), name: 'C', selected: false },
-    { id: uniqid(), name: 'D', selected: false },
-    { id: uniqid(), name: 'E', selected: false },
-    { id: uniqid(), name: 'F', selected: false },
-  ]); // Category to add later: Flags
+  // const [grid, setGrid] = useState([
+  //   {
+  //     id: uniqid(),
+  //     name: 'A',
+  //     selected: false,
+  //     imgSrc: `/images/flags/Flag_of_Canada.svg`,
+  //   },
+  //   { id: uniqid(), name: 'B', selected: false },
+  //   { id: uniqid(), name: 'C', selected: false },
+  //   { id: uniqid(), name: 'D', selected: false },
+  //   { id: uniqid(), name: 'E', selected: false },
+  //   { id: uniqid(), name: 'F', selected: false },
+  // ]); // Category to add later: Flags
+  const [grid, setGrid] = useState(flags);
 
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
@@ -51,7 +58,6 @@ const App = () => {
     const gridIndex = grid.findIndex((item) => item.id === clickedID);
     // Check if current card has been selected
     if (grid[gridIndex].selected) {
-      console.log(`${event.target.id} already selected`);
       // If so, end game
       resetGame();
     } else {
@@ -67,6 +73,8 @@ const App = () => {
       <CardGrid grid={grid} handleClick={handleClick} />
       Score: {score}
       Best Score: {bestScore}
+      {/* <img src={require('./images/flags/Flag_of_Canada.svg')} alt="flag" /> */}
+      {/* <img src={require('./images/flags/Flag_of_Canada.svg')} alt="flag" /> */}
     </div>
   );
 };
