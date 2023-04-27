@@ -6,19 +6,6 @@ import CardGrid from './components/CardGrid';
 import { flags } from './flagData';
 
 const App = () => {
-  // const [grid, setGrid] = useState([
-  //   {
-  //     id: uniqid(),
-  //     name: 'A',
-  //     selected: false,
-  //     imgSrc: `/images/flags/Flag_of_Canada.svg`,
-  //   },
-  //   { id: uniqid(), name: 'B', selected: false },
-  //   { id: uniqid(), name: 'C', selected: false },
-  //   { id: uniqid(), name: 'D', selected: false },
-  //   { id: uniqid(), name: 'E', selected: false },
-  //   { id: uniqid(), name: 'F', selected: false },
-  // ]); // Category to add later: Flags
   const [grid, setGrid] = useState(flags);
 
   const [score, setScore] = useState(0);
@@ -54,7 +41,7 @@ const App = () => {
   }
 
   const handleClick = (event) => {
-    const clickedID = event.target.id;
+    const clickedID = event.currentTarget.id;
     const gridIndex = grid.findIndex((item) => item.id === clickedID);
     // Check if current card has been selected
     if (grid[gridIndex].selected) {
