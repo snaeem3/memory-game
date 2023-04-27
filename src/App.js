@@ -37,6 +37,11 @@ const App = () => {
     }
     setScore(0);
 
+    document.querySelector('#current-score').classList.remove('hidden');
+    document.querySelector('#best-score').classList.remove('hidden');
+    document.querySelector('#result').classList.add('hidden');
+    document.querySelector('#result').textContent = '';
+
     function unselectAllObjects(array) {
       const updatedArray = array.map((obj) => ({
         ...obj,
@@ -49,16 +54,54 @@ const App = () => {
   const handleClick = (event) => {
     const clickedID = event.currentTarget.id;
     const gridIndex = grid.findIndex((item) => item.id === clickedID);
+
+    // event.currentTarget.classList.add('clicked');
+    animateCards(document.querySelectorAll('.card'));
+
     // Check if current card has been selected
     if (grid[gridIndex].selected) {
       // If so, end game
+      document.documentElement.style.setProperty(
+        '--scoreboard-color',
+        '#d91616' // red
+      );
       resetGame();
     } else {
       // Else mark card as selected and increment score
       setSelected(clickedID);
       incrementScore();
+      document.documentElement.style.setProperty(
+        '--scoreboard-color',
+        '#32a836' // green
+      );
+    }
+
+    function animateCards(cards) {
+      const newspaperSpinning = [
+        { transform: 'rotate3d(0, 1, 0, 0deg) scale(1)' },
+        { transform: 'rotate3d(0, 1, 0, 360deg) scale(1)' },
+      ];
+
+      const newspaperTiming = {
+        duration: 500,
+        iterations: 1,
+      };
+
+      cards.forEach((card) => {
+        card.animate(newspaperSpinning, newspaperTiming);
+      });
     }
   };
+
+  useEffect(() => {
+    if (score >= grid.length) {
+      // Player wins
+      document.querySelector('#current-score').classList.add('hidden');
+      document.querySelector('#best-score').classList.add('hidden');
+      document.querySelector('#result').classList.remove('hidden');
+      document.querySelector('#result').textContent = 'YOU WIN!';
+    }
+  }, [grid.length, score]);
 
   return (
     <div className="App">
@@ -67,10 +110,12 @@ const App = () => {
       </header>
       <div id="score-board">
         <div id="current-score">Score: {score}</div>
+        <div id="result" className="hidden" />
         <div id="best-score">Best Score: {bestScore}</div>
       </div>
       <CardGrid grid={grid} handleClick={handleClick} />
       <div className="instructions-container">
+        <h2>How To Play</h2>
         <ol>
           <li>Click on any card to start the game</li>
           <li>Each click earns you one point</li>

@@ -10,6 +10,7 @@
   --primary-color-dark: #46618a;
   --shade-color: #494949da;
   --color-shadow: grey;
+  --scoreboard-color: rgb(0, 0, 0);
 }
 
 *,
@@ -64,6 +65,10 @@ button:not(:disabled):hover {
   vertical-align: bottom;
 }
 
+.hidden {
+  display: none;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -87,18 +92,11 @@ code {
 
 #score-board {
   display: flex;
+  gap: 2rem;
+  padding: var(--section-padding);
+  border: solid 2px var(--scoreboard-color);
+  border-radius: var(--border-radius-default);
 }
-
-/* .card-grid {
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-columns: repeat(3, minmax(150px, 1fr));
-  gap: 1rem;
-  width: 100%;
-  max-width: 90vw;
-  justify-items: center;
-  justify-content: center;
-} */
 
 .card-grid {
   display: grid;
@@ -108,6 +106,7 @@ code {
   gap: 1rem;
   width: 100%;
   justify-items: center;
+  padding: var(--section-padding);
 }
 
 @media screen and (min-width: 600px) {
@@ -132,7 +131,11 @@ code {
 .card {
   /* width: 100%; */
   width: clamp(8rem, 100%, 300px);
-  /* border: solid 1px black; */
+  transition: transform 0.3s ease-in-out;
+}
+
+.card.clicked {
+  transform: scale(2);
 }
 
 .flag-image {
@@ -147,8 +150,7 @@ figure {
 figcaption {
   position: absolute;
   /* display: none; */
-  /* bottom: -50px; initially position below the figure */
-  top: 0.25rem;
+  top: 1px;
   left: 1px;
   background: rgba(0, 0, 0, 0.603);
   color: white;
@@ -165,4 +167,10 @@ figure:hover figcaption {
   /* transform: translateY(0); */
   opacity: 1;
   visibility: visible;
+}
+
+.instructions-container h2 {
+  text-align: center;
+  text-decoration: underline;
+  padding: var(--section-padding);
 }
