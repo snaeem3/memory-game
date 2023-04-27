@@ -24,7 +24,11 @@
     "extends": [
       "wesbos",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "react/prop-types": "off",
+      "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    }
   },
   "browserslist": {
     "production": [
