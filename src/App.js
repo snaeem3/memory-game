@@ -6,7 +6,13 @@ import CardGrid from './components/CardGrid';
 import { flags } from './flagData';
 
 const App = () => {
-  const [grid, setGrid] = useState(flags);
+  // Set every card as unselected
+  const unselectedFlags = flags.map((obj) => ({
+    ...obj,
+    selected: false,
+  }));
+
+  const [grid, setGrid] = useState(unselectedFlags);
 
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
@@ -58,10 +64,10 @@ const App = () => {
     <div className="App">
       <header>Memory Game</header>
       <CardGrid grid={grid} handleClick={handleClick} />
-      Score: {score}
-      Best Score: {bestScore}
-      {/* <img src={require('./images/flags/Flag_of_Canada.svg')} alt="flag" /> */}
-      {/* <img src={require('./images/flags/Flag_of_Canada.svg')} alt="flag" /> */}
+      <div id="score-board">
+        Score: {score}
+        Best Score: {bestScore}
+      </div>
     </div>
   );
 };
