@@ -62,7 +62,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <header>Memory Game</header>
+      <header>
+        <h1>Memory Game</h1>
+      </header>
+      <div id="score-board">
+        <div id="current-score">Score: {score}</div>
+        <div id="best-score">Best Score: {bestScore}</div>
+      </div>
+      <CardGrid grid={grid} handleClick={handleClick} />
       <div className="instructions-container">
         <ol>
           <li>Click on any card to start the game</li>
@@ -72,11 +79,6 @@ const App = () => {
           <li>The highest score achieved will be your Best Score.</li>
         </ol>
       </div>
-      <div id="score-board">
-        Score: {score}
-        Best Score: {bestScore}
-      </div>
-      <CardGrid grid={grid} handleClick={handleClick} />
     </div>
   );
 };
