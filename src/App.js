@@ -63,11 +63,20 @@ const App = () => {
   return (
     <div className="App">
       <header>Memory Game</header>
-      <CardGrid grid={grid} handleClick={handleClick} />
+      <div className="instructions-container">
+        <ol>
+          <li>Click on any card to start the game</li>
+          <li>Each click earns you one point</li>
+          <li>If you click the same image twice, you lose the game</li>
+          <li>Keep clicking different images to increase your score</li>
+          <li>The highest score achieved will be your Best Score.</li>
+        </ol>
+      </div>
       <div id="score-board">
         Score: {score}
         Best Score: {bestScore}
       </div>
+      <CardGrid grid={grid} handleClick={handleClick} />
     </div>
   );
 };
