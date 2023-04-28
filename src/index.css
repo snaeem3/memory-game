@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap");
 
 :root {
   --section-padding: 1rem;
@@ -19,7 +17,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "IBM Plex Mono", monospace;
+  font-family: "Merriweather Sans", sans-serif;
 }
 
 button,
@@ -88,6 +86,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+header {
+  padding: var(--section-padding);
+  font-size: 2rem;
 }
 
 #score-board {
@@ -169,8 +172,18 @@ figure:hover figcaption {
   visibility: visible;
 }
 
+.instructions-container {
+  background: var(--primary-color);
+  border-radius: var(--border-radius-default);
+  padding: 1rem 2rem;
+}
+
 .instructions-container h2 {
   text-align: center;
   text-decoration: underline;
-  padding: var(--section-padding);
+  padding-bottom: var(--section-padding);
+}
+
+#result {
+  font-size: 2rem;
 }
