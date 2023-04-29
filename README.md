@@ -3,6 +3,7 @@
 This project showcases a simple memory game built with React as part of the [Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-memory-card) Curriculum. Select flags without repeating any to win!
 
 ## [Live View](https://snaeem3.github.io/memory-game)
+![memory-game](https://user-images.githubusercontent.com/11710951/235327354-810909fe-5d7c-4877-abff-b8ac830eb834.PNG)
 
 ## Skills involved with this project:
 
