@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import uniqid from 'uniqid';
 import logo from './logo.svg';
 // import './App.css';
@@ -105,6 +106,9 @@ const App = () => {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>Memory Game</title>
+      </Helmet>
       <header>
         <h1>Memory Game</h1>
       </header>
